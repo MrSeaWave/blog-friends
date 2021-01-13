@@ -1,0 +1,23 @@
+{
+  "name": "blog-friends",
+  "version": "1.0.0",
+  "description": "blog-friends，博客的友链",
+  "main": "index.js",
+  "scripts": {
+    "build": "node scripts/build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrSeaWave/blog-friends.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MrSeaWave/blog-friends/issues"
+  },
+  "homepage": "https://github.com/MrSeaWave/blog-friends#readme",
+  "dependencies": {
+    "js-yaml": "^4.0.0",
+    "mkdirp": "^1.0.4"
+  }
+}
