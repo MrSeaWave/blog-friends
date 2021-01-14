@@ -7,6 +7,8 @@
     <style>
       body {
         background: #f2f5f8;
+        margin: 0;
+        padding: 8px;
       }
       :root {
         --t-s: #2f3d4e;
@@ -140,7 +142,7 @@
       </p>
     </div>
     <script type="text/javascript">
-      $.getJSON("../links.json", function(data) {
+      $.getJSON("./links.json", function(data) {
         console.log("json", data);
 
         $.each(data, function(key, e) {
