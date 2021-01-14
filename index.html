@@ -1,12 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>友链</title>
-</head>
-<body>
-<div>
-    友链
-</div>
-</body>
+    <script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+      body {
+        background: #f2f5f8;
+      }
+      :root {
+        --t-s: #2f3d4e;
+        --t: #37475b;
+        --resp-flex: block;
+        --shadow: 0 4px 10px rgba(0, 2, 4, 0.06), 0 0;
+        --main: #fff;
+        --radius: 0.5rem;
+      }
+
+      @media screen and (min-width: 500px) {
+        :root {
+          --resp-flex: flex;
+        }
+      }
+      a {
+        text-decoration: none;
+      }
+      .card {
+        box-shadow: var(--shadow);
+      }
+
+      .c-card,
+      .card {
+        overflow: auto;
+        margin-top: 1.5rem;
+        border-radius: var(--radius);
+        background: var(--main);
+        box-shadow: var(--shadow);
+      }
+
+      .c-card {
+        padding: 1.5rem;
+      }
+
+      .cols {
+        margin: 0 -0.75rem;
+        display: var(--resp-flex);
+      }
+
+      .col {
+        padding: 0.75rem;
+        box-sizing: border-box;
+      }
+
+      #app-links {
+        margin-top: 0.75rem;
+        flex-wrap: wrap;
+        margin-bottom: 0.75rem;
+      }
+
+      #app-links .card {
+        margin: 0;
+      }
+
+      @media screen and (min-width: 500px) {
+        #app-links .col {
+          flex: none;
+          width: 50%;
+        }
+      }
+
+      #app-links .media-left {
+        margin-right: 0;
+        flex-basis: auto;
+        flex-grow: 0;
+        flex-shrink: 0;
+        height: 64px;
+      }
+
+      .media-content {
+        flex-basis: auto;
+        -webkit-box-flex: 1;
+        flex-grow: 1;
+        flex-shrink: 1;
+        text-align: left;
+      }
+
+      @media screen and (max-width: 501px) {
+        .media-content {
+          overflow-x: auto;
+        }
+      }
+
+      #app-links .media-content {
+        margin: auto 0;
+        padding: 0.25rem 1rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .link-title {
+        color: var(--t-s);
+      }
+
+      .link-text {
+        color: var(--t);
+        font-size: 0.9rem;
+        opacity: 0.6;
+      }
+
+      .link-pic {
+        height: 64px;
+        width: 64px;
+        border-radius: 0.5rem 0 0 0.5rem;
+        overflow: hidden;
+        background-color: #fff;
+      }
+
+      .media {
+        align-items: flex-start;
+        display: flex;
+        text-align: left;
+        overflow: visible;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app-links" class="cols"></div>
+    <div class="c-card" id="apps-links-info">
+      <p>
+        如果想要自己的网站出现在这个页面上的话，请先阅读
+        <a
+          href="https://github.com/MrSeaWave/blog-friends"
+          rel="external nofollow noopenner"
+          target="_blank"
+          >MrSeaWave/blog-friends</a
+        >
+        这个 GitHub 仓库的 README，符合条件的话，就可以按照要求申请交换友链啦！
+      </p>
+    </div>
+    <script type="text/javascript">
+      $.getJSON("../links.json", function(data) {
+        console.log("json", data);
+
+        $.each(data, function(key, e) {
+          const html = ` <div class="col">
+        <a
+          href=${e.url}
+          title="${key}"
+          target="_blank"
+          rel="noopener nofollow"
+          ><div class="card media">
+            <div class="media-left">
+              <img
+                class="link-pic"
+                src='./images/${e.avatar}'
+              />
+            </div>
+            <div class="media-content">
+              <strong class="link-title">${key}</strong><br /><span
+                class="link-text"
+                >${e.desc}</span
+              >
+            </div>
+          </div></a
+        >
+      </div>`;
+
+          $(".cols").append(html);
+        });
+      });
+    </script>
+  </body>
 </html>
